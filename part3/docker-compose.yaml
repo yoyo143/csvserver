@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+ frontend:
+    image: "infracloudio/csvserver:latest"
+    ports:
+      - 9393:9300
+    volumes:
+      - /home/centos/infracloud/solution/csvserver/solution/inputFile:/csvserver/inputdata
+    environment:
+      CSVSERVER_BORDER: Orange
+    command: ["/csvserver/csvserver"]
+ prometheus:
+    image: "prom/prometheus:v2.22.0"
+    ports:
+      - 9090:9090
+    volumes:
+      - type: bind
+        source: /csvserver/solution/part3/prometheus.yml 
+        target: /etc/prometheus/prometheus.yml
