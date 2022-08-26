@@ -5,7 +5,7 @@ services:
     ports:
       - 9393:9300
     volumes:
-      - /home/centos/infracloud/solution/csvserver/solution/inputFile:/csvserver/inputdata
+      - /home/centos/infracloud/solution/csvserver/solution/inputFile:/csvserver/inputdata:z
     environment:
       CSVSERVER_BORDER: Orange
     command: ["/csvserver/csvserver"]
